@@ -143,11 +143,19 @@ describe('When isFullHouse is called', () => {
 // }
 
 const isFullHouse = (array) => {
-  let num1 = (array.sort())[0]
-  let num2 = (array.sort())[array.length - 1]
-  let subset1 = array.filter(value => value === num1).length
-  let subset2 = array.filter(value => value === num2).length
-  return (subset1 === subset2) ? 
-    false :
-    (subset1 === 2 || subset1 === 3) && (subset2 === 2 || subset2 === 3)
+  if(array.length != 5){
+    return false
+  } else {
+    let num1 = (array.sort())[0]
+    let num2 = (array.sort())[array.length - 1]
+    let subset1 = array.filter(value => value === num1).length
+    let subset2 = array.filter(value => value === num2).length
+    return (subset1 === subset2) 
+              ? false 
+              : (subset1 === 2 || subset1 === 3) && (subset2 === 2 || subset2 === 3)
+  }
 }
+
+console.log(isFullHouse(['A', 2, 3, 4, 5, 6]))
+console.log(isFullHouse([4, 2, 2, 2, 5, 5]))
+console.log(isFullHouse([4, 2, 2, 2]))
